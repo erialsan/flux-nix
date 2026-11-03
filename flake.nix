@@ -10,6 +10,15 @@
     };
   };
 
+  nixConfig = {
+    extra-substituters = [
+      "https://erialsan.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "erialsan.cachix.org-1:TCJo1GXMp1biAoY2SaghfNK7W4kXGvymlJmJ4cIPNG4="
+    ];
+  };
+
   outputs = {
     self,
     nixpkgs,

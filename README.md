@@ -11,6 +11,18 @@ nix build .#flux-filemanager
 
 バイナリ名は `flux-fm` です。
 
+## バイナリキャッシュ
+
+[erialsan.cachix.org](https://app.cachix.org/cache/erialsan) にビルド済みバイナリを公開しています。`flake.nix` の `nixConfig` に substituter と公開鍵が宣言されているため、flake の信頼設定を有効にしていれば `nix build` / `nix run` 時に自動でキャッシュから取得され、ソースビルドは不要です。
+
+明示的に拒否してソースビルドしたい場合は:
+
+```console
+nix build --no-use-substituters .
+```
+
+信頼していない flake からの `nixConfig` はデフォルトでは無視されるため、キャッシュを使わない挙動は設定次第です（`accept-flake-config = true` 相当、または該当ユーザーを trusted にしている場合に有効になります）。
+
 ## 他の flake / NUR からの利用
 
 公開リポジトリへ移した後は、次の出力を利用できます。
