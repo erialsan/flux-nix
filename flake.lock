@@ -1,0 +1,45 @@
+{
+  "nodes": {
+    "flux-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1793678349,
+        "narHash": "sha256-2idv/tTuSy3YX4O932XBHtYNXEMAnVv5lRLC6kp0nzE=",
+        "owner": "killown",
+        "repo": "flux",
+        "rev": "c6147ccee4694f19716684a9b29b6ce029281829",
+        "type": "github"
+      },
+      "original": {
+        "owner": "killown",
+        "repo": "flux",
+        "rev": "c6147ccee4694f19716684a9b29b6ce029281829",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1793540411,
+        "narHash": "sha256-fiPJ88izTVucjeo2EQ3jk4aWmLg03I1D4vxnX2QjEgE=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "0bb2eedc20e4739f29e8045034f2828ad7054f8f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "0bb2eedc20e4739f29e8045034f2828ad7054f8f",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "flux-src": "flux-src",
+        "nixpkgs": "nixpkgs"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
