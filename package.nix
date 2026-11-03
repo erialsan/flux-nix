@@ -19,6 +19,7 @@
   icoutils,
   imagemagick,
   p7zip,
+  xorg,
 }:
 rustPlatform.buildRustPackage {
   pname = "flux-filemanager";
@@ -47,10 +48,24 @@ rustPlatform.buildRustPackage {
     vte-gtk4
   ];
 
-  # 上流の保護パステストは /usr/../etc/ の正規化も試すが、Nix sandbox には
-  # /usr が無いため、その環境でのみ当該テストを除外する。/etc 自体の
-  # 保護テストを含む残りのテストはすべて実行する。
+  # widgets::components::test_lock_icon_binding など一部のテストは GTK の
+  # 初期化（ディスプレイ接続）を必要とする。Nix sandbox / CI にはディスプレイが
+  # 無いため、仮想ディスプレイ Xvfb を立ててからテストを実行する。
+  nativeCheckInputs = [
+    xorg.xvfb
+  ];
+
   preCheck = ''
+    Xvfb :99 -screen 0 1024x768x24 &
+    for i in $(seq 1 50); do
+      [[ -S /tmp/.X11-unix/X99 ]] && break
+      sleep 0.1
+    done
+    export DISPLAY=:99
+
+    # 上流の保護パステストは /usr/../etc/ の正規化も試すが、Nix sandbox には
+    # /usr が無いため、その環境でのみ当該テストを除外する。/etc 自体の
+    # 保護テストを含む残りのテストはすべて実行する。
     if [[ ! -d /usr ]]; then
       checkFlags+=(--skip protected_paths_are_reported_in_their_resolved_form)
     fi
