@@ -19,6 +19,7 @@
   icoutils,
   imagemagick,
   p7zip,
+  shared-mime-info,
   xorg,
 }:
 rustPlatform.buildRustPackage {
@@ -53,6 +54,7 @@ rustPlatform.buildRustPackage {
   # 無いため、仮想ディスプレイ Xvfb を立ててからテストを実行する。
   nativeCheckInputs = [
     xorg.xvfb
+    shared-mime-info
   ];
 
   preCheck = ''
@@ -63,20 +65,37 @@ rustPlatform.buildRustPackage {
     done
     export DISPLAY=:99
 
+    # gio の content_type_guess が MIME データベースを見つけられるようにする。
+    export XDG_DATA_DIRS=''${shared-mime-info}/share:''${XDG_DATA_DIRS:-}
+
     # 上流の保護パステストは /usr/../etc/ の正規化も試すが、Nix sandbox には
     # /usr が無いため、その環境でのみ当該テストを除外する。/etc 自体の
     # 保護テストを含む残りのテストはすべて実行する。
     if [[ ! -d /usr ]]; then
       checkFlags+=(--skip protected_paths_are_reported_in_their_resolved_form)
     fi
+
+    # test_get_system_mounts_structure は /media や /run/media 配下のマウントを
+    # 前提とするが、Nix sandbox にはマウントポイントが無いため常に失敗する。
+    checkFlags+=(--skip test_get_system_mounts_structure)
+
+    # test_hwga_bind_icon_lookup_count_matches_disk_entries は hwga の hit! プローブ
+    # のカウントを検証するが、hit! は debug_assertions 時のみ有効で、Nix の
+    # buildRustPackage は --release でテストを実行するため、カウントは常に 0 に
+    # なり失敗する。環境とは無関係に成立しないため、常に除外する。
+    checkFlags+=(--skip test_hwga_bind_icon_lookup_count_matches_disk_entries)
   '';
 
   # make install は DESTDIR が無いと $HOME/.config にもメニューを書くため、
   # 書き込み先をビルド用の一時領域へ向ける。テーマのネットワーク取得は
   # UPDATE_THEMES を設定しない限り実行されない。
+  # BIN_PATH を明示するのは、cargoBuildHook が --target を付けるとバイナリが
+  # target/<triple>/release/ に出力され、Makefile のガードが
+  # target/release/ しか探さず失敗するため。
   installPhase = ''
     runHook preInstall
-    HOME="$TMPDIR/home" make install PREFIX="$out"
+    bin=$(find target -maxdepth 3 -type f -name flux-fm | head -n1)
+    HOME="$TMPDIR/home" make install PREFIX="$out" BIN_PATH="$bin"
     runHook postInstall
   '';
 
