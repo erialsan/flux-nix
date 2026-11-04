@@ -20,7 +20,7 @@
   imagemagick,
   p7zip,
   shared-mime-info,
-  xorg,
+  xvfb,
 }:
 rustPlatform.buildRustPackage {
   pname = "flux-filemanager";
@@ -53,7 +53,7 @@ rustPlatform.buildRustPackage {
   # 初期化（ディスプレイ接続）を必要とする。Nix sandbox / CI にはディスプレイが
   # 無いため、仮想ディスプレイ Xvfb を立ててからテストを実行する。
   nativeCheckInputs = [
-    xorg.xvfb
+    xvfb
     shared-mime-info
   ];
 

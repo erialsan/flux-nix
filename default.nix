@@ -1,6 +1,4 @@
-{
-  pkgs ? import <nixpkgs> {},
-}: let
+{pkgs ? import <nixpkgs> {}}: let
   lock = builtins.fromJSON (builtins.readFile ./flake.lock);
   source = lock.nodes."flux-src".locked;
 in {
