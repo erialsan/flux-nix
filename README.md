@@ -33,7 +33,7 @@ nix build --no-use-substituters .
 - `package.nix`（`src` を渡せる通常の `callPackage` 用パッケージ）
 - `default.nix`（NUR が要求する非 flake 用のパッケージセット）
 
-対象システムは `x86_64-linux` と `aarch64-linux` です。`flake.lock` で上流ソースと nixpkgs を固定しています。非 flake 用の `default.nix` も同じ lock からソースの revision とハッシュを読むため、更新先が二重にはなりません。
+対象システムは `x86_64-linux`です。`flake.lock` で上流ソースと nixpkgs を固定しています。非 flake 用の `default.nix` も同じ lock からソースの revision とハッシュを読むため、更新先が二重にはなりません。
 
 NUR 用の評価は次で確認できます。
 
