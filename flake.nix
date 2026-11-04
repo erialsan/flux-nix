@@ -20,7 +20,6 @@
   };
 
   outputs = {
-    self,
     nixpkgs,
     flux-src,
   }: let
