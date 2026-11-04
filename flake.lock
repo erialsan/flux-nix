@@ -3,17 +3,17 @@
     "flux-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1793678349,
-        "narHash": "sha256-2idv/tTuSy3YX4O932XBHtYNXEMAnVv5lRLC6kp0nzE=",
+        "lastModified": 1793766573,
+        "narHash": "sha256-1jFyfvRXZS+elRdb8Y8zLI1b6/dpC9cdpLMJAGhng9k=",
         "owner": "killown",
         "repo": "flux",
-        "rev": "c6147ccee4694f19716684a9b29b6ce029281829",
+        "rev": "9d1fcacd8c8206d52526a3d10cf8189fab2a6ed5",
         "type": "github"
       },
       "original": {
         "owner": "killown",
         "repo": "flux",
-        "rev": "c6147ccee4694f19716684a9b29b6ce029281829",
+        "rev": "9d1fcacd8c8206d52526a3d10cf8189fab2a6ed5",
         "type": "github"
       }
     },
