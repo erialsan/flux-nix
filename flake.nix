@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/0bb2eedc20e4739f29e8045034f2828ad7054f8f";
 
     flux-src = {
-      url = "github:killown/flux/c6147ccee4694f19716684a9b29b6ce029281829";
+      url = "github:killown/flux/9d1fcacd8c8206d52526a3d10cf8189fab2a6ed5";
       flake = false;
     };
   };
