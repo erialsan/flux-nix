@@ -2,10 +2,10 @@
   description = "Nix package for Flux, a keyboard-first GTK4/Libadwaita file manager";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/0bb2eedc20e4739f29e8045034f2828ad7054f8f";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     flux-src = {
-      url = "github:killown/flux/edd75a6c8c00b65676e977b2fcdd28171db3f876";
+      url = "github:killown/flux/6479c9060b141c1e56d42e0e8c7279a102de2b32";
       flake = false;
     };
   };

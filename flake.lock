@@ -3,33 +3,33 @@
     "flux-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1793766573,
-        "narHash": "sha256-1jFyfvRXZS+elRdb8Y8zLI1b6/dpC9cdpLMJAGhng9k=",
+        "lastModified": 1794068689,
+        "narHash": "sha256-HDfjwysVw7GAgAoG3hx/UxxXC0tN9/cjjJ67UzgSl88=",
         "owner": "killown",
         "repo": "flux",
-        "rev": "9d1fcacd8c8206d52526a3d10cf8189fab2a6ed5",
+        "rev": "6479c9060b141c1e56d42e0e8c7279a102de2b32",
         "type": "github"
       },
       "original": {
         "owner": "killown",
         "repo": "flux",
-        "rev": "9d1fcacd8c8206d52526a3d10cf8189fab2a6ed5",
+        "rev": "6479c9060b141c1e56d42e0e8c7279a102de2b32",
         "type": "github"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1793540411,
-        "narHash": "sha256-fiPJ88izTVucjeo2EQ3jk4aWmLg03I1D4vxnX2QjEgE=",
+        "lastModified": 1793876309,
+        "narHash": "sha256-Wojg9lIH/hDH91iDVH2/EPw8oDSpxjxhXONbU1yf4Zg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "0bb2eedc20e4739f29e8045034f2828ad7054f8f",
+        "rev": "f9a75f41be3a74eab55d3a7679d34ad6cc0da977",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
-        "rev": "0bb2eedc20e4739f29e8045034f2828ad7054f8f",
         "type": "github"
       }
     },
